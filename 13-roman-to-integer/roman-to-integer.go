@@ -15,12 +15,12 @@ func romanToInt(s string) int {
 	preVal := 0
 
 	for i := len(s) - 1; i >= 0; i-- {
-		Val := romanMap[s[i]]
-		if Val >= preVal {
-			result += Val
-		} else {
-			result -= Val
-		}
+        Val := romanMap[s[i]]
+        if Val < preVal {
+            result -= Val
+        } else {
+            result += Val
+        }
 		preVal = Val
 	}
 	return result
