@@ -1,5 +1,3 @@
-import "fmt"
-import "strings"
 
 func romanToInt(s string) int {
 
@@ -21,7 +19,6 @@ func romanToInt(s string) int {
 
 	for i := len(s) - 1; i >= 0; i-- {
 		Val, _ = romanMap[s[i]]
-		fmt.Println(result, preVal, Val)
 		if Val >= preVal {
 			result += Val
 		} else {
@@ -31,6 +28,5 @@ func romanToInt(s string) int {
 		preVal = Val
 	}
 
-	fmt.Println(romanMap)
 	return result
 }
