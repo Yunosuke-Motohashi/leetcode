@@ -1,6 +1,10 @@
 import "fmt"
 func minDistance(word1 string, word2 string) int {
     m, n := len(word1), len(word2)
+    if n == m && word1 == word2 {
+        return 0
+    }
+    
     // DPテーブル（スライス）を作成
     dp := make([][]int, m+1)
     for i := range dp {
