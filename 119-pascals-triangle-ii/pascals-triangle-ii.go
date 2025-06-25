@@ -1,22 +1,26 @@
 import "fmt"
+
 func getRow(rowIndex int) []int {
-    dp := make([][]int, rowIndex+1)
-    if rowIndex == 0 {
-        return []int{1}
-    }
-    for i := range dp {
-        dp[i] = make([]int, i+1)
-    }
-    dp[0][0] = 1
-    for i := 1; i<=rowIndex; i++ {
-        for j := 0; j <= i; j++ {
-            fmt.Println(i,j)
-            if j==0 || j==i {
-                dp[i][j] = 1
-            } else {
-                dp[i][j] = dp[i-1][j-1] + dp[i-1][j]
+	if rowIndex == 0 {
+		return []int{1}
+	} else if rowIndex == 1 {
+		return []int{1, 1}
+	} else {
+		PreRow := []int{1}
+        NextRow := []int{}
+
+        for i:=1; i<=rowIndex; i++ {
+		    NextRow = make([]int, i+1)
+            for j:=0; j<len(NextRow);j++ {
+                fmt.Println(i, j, PreRow, NextRow)
+                if j==0 || j == i {
+                    NextRow[j] = 1
+                } else {
+                    NextRow[j] = PreRow[j-1]+PreRow[j]
+                }
             }
-        }
-    }
-    return dp[rowIndex]
+            PreRow = NextRow
+		}
+        return NextRow
+	}
 }
