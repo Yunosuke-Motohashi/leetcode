@@ -1,17 +1,11 @@
-import "fmt"
+// import "fmt"
 
 func countBits(n int) []int {
-    ans := []int{}
-    for i:= 0; i<=n; i++ {
-        
-        countOne := 0
-        j := i
-        for j > 0 {
-            countOne += j & 1 // 最下位ビットをチェック（0 or 1）
-            j >>= 1           // 右シフトして次のビットを処理
-        }
-        fmt.Println(countOne)
-        ans = append(ans, countOne)
+    ans := make([]int, n+1)
+    for i:= 1; i<=n; i++ {
+        ans[i] += ans[i>>1]
+        ans[i] += i & 1
+        // fmt.Println(i, i>>1, ans)
     }
     return ans
 }
