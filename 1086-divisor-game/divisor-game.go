@@ -9,6 +9,10 @@ func divisorGame(n int) bool {
                     dp[i] = true
                     break
                 }
+                if !dp[i-(i/j)] && j != i/j && i != i/j {
+                    dp[i] = true
+                    break
+                }
             }
         }
         // fmt.Println(dp[1:n+1])
