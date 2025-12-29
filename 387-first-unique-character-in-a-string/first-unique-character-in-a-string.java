@@ -1,23 +1,16 @@
 class Solution {
     public int firstUniqChar(String s) {
-        Map<Character, Integer> countMap = new HashMap<>();
-        for (int i=0; i<s.length(); i++) {
-            char ci = s.charAt(i);
-            if (countMap.containsKey(ci)) {
-                countMap.put(ci, countMap.getOrDefault(ci, 0) + 1);
-            } else {
-                countMap.put(ci, 1);
-            }
+        int[] count = new int[26];
+
+        for (int i=0; i <s.length(); i++) {
+            count[s.charAt(i) - 'a']++;
         }
 
-        int ansIdx = -1;
-        for (int i=0; i<s.length(); i++) {
-            char ci = s.charAt(i);
-            if (countMap.get(ci) == 1) {
-                ansIdx = i;
-                break;
+            for (int i=0; i <s.length(); i++) {
+                if (count[s.charAt(i) - 'a'] == 1) {
+                    return i;
+                }
             }
-        }
-        return ansIdx;
+        return -1;
     }
 }
