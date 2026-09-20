@@ -21,8 +21,8 @@ class Solution:
         #     a_z_idx[v] = 26-i
         # print(a_z_idx)
         ans = 0
-        for i, v in enumerate(s):
-            s_value = ord("z") - ord(v) +1
+        for i in range(len(s)):
+            s_value = ord("z") - ord(s[i]) +1
             ans += (i+1) * s_value
             # print(ans, i+1, s_value)
 
